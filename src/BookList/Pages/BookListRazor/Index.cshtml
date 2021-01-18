@@ -1,5 +1,5 @@
-@Page
-@Model BookList.Pages.BookList.IndexModel
+@page
+@model BookList.Pages.BookListRazor.IndexModel
 
 <br />
 <div class="container row p-0 m-0">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="col-12 border p-3 mt-3">
-        <form method="POST">
+        <form method="post">
             @if (Model.Books.Count() > 0)
             {
                 <table class="table table-striped border">
@@ -27,8 +27,17 @@
                    @foreach(var item in Model.Books) 
                    {
                        <tr>
-
-                        </tr>
+                           <td>
+                               @Html.DisplayFor(m => item.Name)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(m => item.Author)
+                           </td>
+                           <td>
+                               <button class="btn btn-danger btn-sm">Delete</button>
+                               <a class="btn btn-success btn-sm text-white">Edit</a>
+                           </td>
+                       </tr>
                    }
                 </table>
             }

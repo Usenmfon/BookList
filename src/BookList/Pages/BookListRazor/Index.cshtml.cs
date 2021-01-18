@@ -4,7 +4,7 @@ using BookList.Model;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookList.Pages.BookList
+namespace BookList.Pages.BookListRazor
 {
     public class IndexModel : PageModel
     {
