@@ -39,5 +39,23 @@ function loadDataTable() {
 }
 
 function Delete(url) {
-    swal()
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover",
+        icon: "warning",
+        dangerMode: true
+    }).then((willDelete) => {
+        $.ajax({
+            type: "DELETE",
+            url: url,
+            success: function(data) {
+                if (data.success) {
+                    toatr.success(data.message);
+                    dataTable.ajax.reload();
+                } else {
+                    toatr.error(data.message);
+                }
+            }
+        });
+    });
 }
