@@ -23,7 +23,7 @@ function loadDataTable() {
                         Edit
                     </a>
                     &nbsp;
-                    <a class='btn btn-danger text-white' style='cursor:PointerEvent; width:70px;'>
+                    <a class='btn btn-danger text-white' style='cursor:PointerEvent; width:70px;' onclick=Delete('/api/book?id='+$(data))>
                         Delete
                     </a>
                     </div>`;
@@ -35,5 +35,9 @@ function loadDataTable() {
             "emptyTable": "no data found"
         },
         "width": "40%"
-    })
+    });
+}
+
+function Delete(url) {
+    swal()
 }
