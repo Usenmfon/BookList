@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookList.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookList.Controllers
 {
@@ -29,8 +30,11 @@ namespace BookList.Controllers
             {
                 return Json(new { success = false, message = "Error while Deleting"});
             }
+
             _db.Book.Remove(bookFromDb);
+
             await _db.SaveChangesAsync();
+            
             return Json(new { success = true, message = "Delete successful"});
         }
         
