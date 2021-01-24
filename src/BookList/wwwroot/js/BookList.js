@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function loadDataTable() {
-    dataTable = $('#DT_load').dataTable({
+    dataTable = $('#DT_load').DataTable({
         "ajax": {
             "url": "/api/book",
             "type": "GET",
@@ -19,11 +19,11 @@ function loadDataTable() {
                 "data": "id",
                 "render": function(data) {
                     return `<div class="text-center">
-                    <a href="/BookList/Upsert?id=$(data)" class='btn btn-success text-white' style='cursor:PointerEvent; width:70px;'>
+                    <a href="/BookListRazor/Upsert?id=${data}" class='btn btn-success text-white' style='cursor:Pointer; width:70px;'>
                         Edit
                     </a>
                     &nbsp;
-                    <a class='btn btn-danger text-white' style='cursor:PointerEvent; width:70px;' onclick=Delete('/api/book?id='+$(data))>
+                    <a class='btn btn-danger text-white' style='cursor:Pointer; width:70px;' onclick=Delete('/api/book?id='+${data})>
                         Delete
                     </a>
                     </div>`;

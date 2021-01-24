@@ -16,7 +16,7 @@ namespace BookList.Controllers
         {
             _db = db;
         }
-
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Json(new { data = await _db.Book.ToListAsync()});
