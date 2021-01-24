@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using BookList.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookList.Pages.BookListRazor
 {
@@ -15,9 +16,20 @@ namespace BookList.Pages.BookListRazor
         [BindProperty]
         public Book Book { get; set; }
 
-        public async Task OnGet(int id)
+        public async Task<IActionResult> OnGet(int? id)
         {
-            Book = await _db.Book.FindAsync(id);
+            Book = new Book();
+            if (id == null)
+            {
+                return Page();
+            }
+
+            Book = await _db.Book.FirstOrDefaultAsync(u => u.Id == id);
+            if (Book == null)
+            {
+                return NotFound();
+            }
+            return Page();
         }
 
         public async Task<IActionResult> OnPost()
